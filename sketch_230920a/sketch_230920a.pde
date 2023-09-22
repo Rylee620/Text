@@ -1,48 +1,65 @@
 //Global Variables
 int appWidth, appHeight;
-String title, footer;
+String title="I hate this!!", footer="Placeholder";
 PFont titleFont, footerFont;
-color cyan=#00F7F5, resetDefaultInk=#FFFFFF;
-int sizefont;
+color cyan=#00DAE0, resetDefaultInk=#FFFFFF, purple = #C303FA;
+int sizeFont, size;
 float xTitle, yTitle, widthTitle, heightTitle;
-float xFootor, yFooter, widthFooter, heightFooter;
+float xFooter, yFooter, widthFooter, heightFooter;
 //
 void setup() {
-//fullScreen(); //displayWidth & displayHeight
+  //fullScreen(); //displayWidth & displayHeight
+  size(500, 600);
+  appWidth = width;
+  appHeight = height;
+  //
+  // Population
+  xTitle = appWidth*1/4;
+  yTitle = appHeight*1/10;
+  widthTitle = appWidth*1/2;
+  heightTitle= appHeight*2/10;
+  xFooter = xTitle;
+  yFooter = appHeight*7/10;
+  widthFooter = widthTitle;
+  heightFooter = heightTitle;
+  //
+  // DIVs or rect()
+  // Layout our text space and typographical features
+  rect( xTitle, yTitle, widthTitle, heightTitle );
+  rect( xFooter, yFooter, widthFooter, heightFooter );
+  //
+  // Text Setup
+  // Fonts from OS (Operating System)
+  String[] fontList = PFont.list(); //Lists all fonts available on OS
+  printArray(fontList);
+  titleFont = createFont("Harrington", 55);
+  footerFont = createFont("ArialMT", 55); //Verify the font exists in Processing.Java
+  // Tools / Create Font / Find Font / Do not press "OK", known bug
+  //
+} //End setup
 //
-// Population
-//xTitle = appWidth*1/4;
-//yTitle = appHeight*1/10;
-//widthTitle = appWidth*1/2;
-//heightTitle = appHeight*2/10;
-//xFooter = xTitle;
-//yFooter = appHeight*7/10;
-//widthFooter = widthTitle;
-//heightFooter = heightTitle;
-//
-//DIVs or rect()
-rect(xTitle, yTitle, widthTitle, heightTitle); //Title: This is dumb
-  //rect( xFootor, yFooter, widthFooter, heightFooter); //Footer: Placeholder
-// Layout our text space and typographical features
-//Text Setup
-//Fonts from OS (Operating system)
-String[] fontList = PFont.list(); //Lists all fonts available on OS
-//printArray(fontList);
-//titleFont = ComicSansMS-Bold;
-//footerFont = ComicSansMS-Bold;
-//
-}//End setup
 void draw() {
   //Text is same size or relative to rect()
   //
   //Drawing Font Code
-  fill(cyan);
-  textAlign(CENTER, CENTER);
-  size = ;
-  textFont();
-  text ();
-  //rect(xTitle, yTitle, widthTitle, heightTitle); //Title: This is dumb
-  //rect( xFootor, yFooter, widthFooter, heightFooter); //Footer: 
+  //
+  //CAUTION: review this tomorrow
+  fill(cyan); //ink
+  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+  size = 20;
+  textFont(titleFont, size);
+  text ( title, xTitle, yTitle, widthTitle, heightTitle );
+  fill(purple); //ink
+  textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
+  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+  textFont(footerFont, size);
+  text ( footer, xFooter, yFooter, widthFooter, heightFooter );
+  fill(resetDefaultInk); //ink
+  //
+  //
+  //rect(  ); //Title: 
+  //rect(   ); //Footer: 
 } //End draw
 //
 void keyPressed() {} // End keyPressed
